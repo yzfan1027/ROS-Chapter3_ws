@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robot_base">
+<xacro:include filename="robot_essentials.xacro"/>
+<xacro:include filename="$(find robot_description)/urdf/robot_essentials.xacro" />
+    <link name="base_link">
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="1.5707963267949 0 3.14" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/robot_base.stl" />
+            </geometry>
+            <material
+                name="">
+                <color 
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual> 
+    </link>
+
+    <xacro:robot_wheel prefix="front_left" />
+    <xacro:robot_wheel prefix="front_right" />
+    <xacro:robot_wheel prefix="rear_left" />
+    <xacro:robot_wheel prefix="rear_right" />
+
+    <xacro:wheel_joint prefix="front_left" origin="0.220 0.250 0" />
+    <xacro:wheel_joint prefix="front_right" origin="0.220 -0.250 0" />
+    <xacro:wheel_joint prefix="rear_left" origin="-0.220 0.250 0" />
+    <xacro:wheel_joint prefix="rear_right" origin="-0.220 -0.250 0" />
+</robot>
